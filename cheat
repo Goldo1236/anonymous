@@ -181,10 +181,10 @@ end)
 
 -- cheats
 local page3 = Cheat:addPage("cheats", 5012544693)
-local Goldo = page3:addSection("Goldo")
+local oxi = page3:addSection("oxi")
 local AdminCmds = page3:addSection("admin cmds")
 
-Goldo:addButton("Goldo cheats", function()
+oxi:addButton("oxi cheats", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Goldo1236/anonymous/main/cheat%20d'oxi", true))()
 end)
 AdminCmds:addButton("admin cmds", function()

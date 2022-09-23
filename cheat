@@ -214,7 +214,7 @@ local page2 = Cheat:addPage("paramètres", 5012544693)
 local parametres = page2:addSection("paramètres")
 
 
-parametres:addKeybind("Toggle Keybind", Enum.KeyCode.PageUp, function()
+parametres:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
 	Cheat:toggle()
 end, function()
 end)

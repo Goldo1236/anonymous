@@ -1,1 +1,238 @@
-if (not game:IsLoaded()) then game.Loaded:Wait(); end local k = { 3910662683, --[[Wazzu3 (4iem compte)]] 426302615, --[[Goldo1236 (1er compte)]] } local r = false for i, v in pairs(k) do if game.Players.LocalPlayer.UserId == v then r = true end end if not r then print("\114\101\102\117\115\101\100") return else print("\86\97\108\105\100\32\94\94") end local c = false  _G.FLYING = false local d = {F = 0, B = 0, L = 0, R = 0} local g = {F = 0, B = 0, L = 0, R = 0} local m = 5 local n = game.Players.LocalPlayer:GetMouse() local h = 50 local function s() local o = Instance.new('BodyGyro', game.Players.LocalPlayer.Character.HumanoidRootPart) local i = Instance.new('BodyVelocity', game.Players.LocalPlayer.Character.HumanoidRootPart) o.P = 9e4 o.maxTorque = Vector3.new(9e9, 9e9, 9e9) o.cframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame i.velocity = Vector3.new(0, 0.1, 0) i.maxForce = Vector3.new(9e9, 9e9, 9e9) spawn(function() repeat wait() game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true if d.L + d.R ~= 0 or d.F + d.B ~= 0 then m = h elseif not (d.L + d.R ~= 0 or d.F + d.B ~= 0) and m ~= 0 then m = 0 end if (d.L + d.R) ~= 0 or (d.F + d.B) ~= 0 then i.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (d.F + d.B)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(d.L + d.R, (d.F + d.B) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * m g = {F = d.F, B = d.B, L = d.L, R = d.R} elseif (d.L + d.R) == 0 and (d.F + d.B) == 0 and m ~= 0 then i.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (g.F + g.B)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(g.L + g.R, (g.F + g.B) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * m else i.velocity = Vector3.new(0, 0.1, 0) end o.cframe = game.Workspace.CurrentCamera.CoordinateFrame until not _G.FLYING d = {F = 0, B = 0, L = 0, R = 0} g = {F = 0, B = 0, L = 0, R = 0} m = 0 o:destroy() i:destroy() game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false end) end n.KeyDown:connect(function(j) if j:lower() == 'w' then d.F = 1 elseif j:lower() == 's' then d.B = -1 elseif j:lower() == 'a' then d.L = -1  elseif j:lower() == 'd' then  d.R = 1 end end) n.KeyUp:connect(function(j) if j:lower() == 'w' then d.F = 0 elseif j:lower() == 's' then d.B = 0 elseif j:lower() == 'a' then d.L = 0 elseif j:lower() == 'd' then d.R = 0 end end) local _ = loadstring(game:HttpGet("https://raw.githubusercontent.com/oxilegeek/gui-creator/main/gui%20creator"))() local s_ = _.new("\103\111\108\100\111\32\99\104\101\97\116\115", 5013109572) local function b() game.CoreGui:FindFirstChild("\103\111\108\100\111\32\99\104\101\97\116\115"):Destroy() end local bs = s_:addPage("\71\195\169\110\195\169\114\97\108", 5012544693) local a = bs:addSection("\83\101\99\116\105\111\110\32\49") a:addButton("\100\114\111\112\32\105\110\118", function() for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do v.Parent = game.Players.LocalPlayer.Character end wait(1) game.Players.LocalPlayer.Character.Humanoid:Destroy() end) a:addToggle("\102\108\121", nil, function(q) _G.FLYING = q s() end) a:addToggle("\84\112\32\99\108\105\99", nil, function(q) if q == true then c = true end if q == false then c = false end end) a:addKeybind("\116\111\117\99\104\101\32\116\112", Enum.KeyCode.E, function() if c == true then local p = game.Players.LocalPlayer:GetMouse() if p.Target then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(p.Hit.x, p.Hit.y + 5, p.Hit.z) end end end) local jp = s_:addPage("\99\104\101\97\116\115", 5012544693) local f = jp:addSection("\111\120\105") local t = jp:addSection("\97\100\109\105\110\32\99\109\100\115") f:addButton("\111\120\105\32\99\104\101\97\116\115", function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\111\120\105\103\101\101\107\108\101\99\104\101\97\116\101\114\47\111\120\105\115\99\114\105\112\116\47\109\97\105\110\47\111\120\105\115\99\114\105\112\116", true))() end) t:addButton("\97\100\109\105\110\32\99\109\100\115", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Goldo1236/cheats/main/admin%20script", true))() end) local qt = s_:addPage("\118\105\115\117\97\108", 5012544693) local lq = qt:addSection("\99\97\109\101\114\97") lq:addToggle("\99\97\109\101\114\97\32\110\111\99\108\105\112", nil, function(q) if q == true then game.Players.LocalPlayer.DevCameraOcclusionMode = 1 end if q == false then game.Players.LocalPlayer.DevCameraOcclusionMode = 0  end end) local kl = s_:addPage("\112\97\114\97\109\195\168\116\114\101\115", 5012544693) local rk = kl:addSection("\112\97\114\97\109\195\168\116\114\101\115") rk:addKeybind("\84\111\103\103\108\101\32\75\101\121\98\105\110\100", Enum.KeyCode.PageUp, function() s_:toggle() end, function() end) game.CoreGui.ChildAdded:Connect(function(l) if l.Name == "\103\111\108\100\111\32\99\104\101\97\116\115" then b() end end) s_:SelectPage(s_.pages[1], true) 
+if (not game:IsLoaded()) then
+	game.Loaded:Wait();
+end
+
+
+
+
+
+
+local AcessTable = {
+	3910662683, --[[Wazzu3 (4iem compte)]]
+	426302615, --[[Goldo1236 (1er compte)]]
+
+}
+
+
+
+local Acess = false
+
+for i, v in pairs(AcessTable) do
+	if game.Players.LocalPlayer.UserId == v then
+		Acess = true
+	end
+end
+
+if not Acess then
+	print("refused")
+	--game.CoreGui:FindFirstChild(name).Main.Visible = false
+	--venyx:Notify("You're not whitelisted", "Do you want to buy the cheat ?", function(value)
+	--	if value then
+	--		print(game.PlaceId)
+	--		game:GetService("TeleportService"):Teleport(31285342 , game.Players.LocalPlayer)
+	--	end
+	--end)
+	return
+else
+	print("Valid ^^")
+end
+
+
+
+
+
+
+
+
+
+local TpClicOn = false 
+
+
+
+
+
+
+
+-- fonction
+
+_G.FLYING = false
+local CONTROL = {F = 0, B = 0, L = 0, R = 0}
+local lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+local SPEED = 5
+local MOUSE = game.Players.LocalPlayer:GetMouse()
+local flySpeed = 50
+
+
+local function FLY()
+	local BG = Instance.new('BodyGyro', game.Players.LocalPlayer.Character.HumanoidRootPart)
+	local BV = Instance.new('BodyVelocity', game.Players.LocalPlayer.Character.HumanoidRootPart)
+	BG.P = 9e4
+	BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+	BG.cframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+	BV.velocity = Vector3.new(0, 0.1, 0)
+	BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+
+
+	spawn(function()
+		repeat wait()
+			game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
+			if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 then
+				SPEED = flySpeed
+			elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0) and SPEED ~= 0 then
+				SPEED = 0
+			end
+			if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 then
+				BV.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+				lCONTROL = {F = CONTROL.F, B = CONTROL.B, L = CONTROL.L, R = CONTROL.R}
+			elseif (CONTROL.L + CONTROL.R) == 0 and (CONTROL.F + CONTROL.B) == 0 and SPEED ~= 0 then
+				BV.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lCONTROL.F + lCONTROL.B)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lCONTROL.L + lCONTROL.R, (lCONTROL.F + lCONTROL.B) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+			else
+				BV.velocity = Vector3.new(0, 0.1, 0)
+			end
+			BG.cframe = game.Workspace.CurrentCamera.CoordinateFrame
+		until not _G.FLYING
+		CONTROL = {F = 0, B = 0, L = 0, R = 0}
+		lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+		SPEED = 0
+		BG:destroy()
+		BV:destroy()
+		game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+	end)
+end
+
+MOUSE.KeyDown:connect(function(KEY)
+	if KEY:lower() == 'w' then
+		CONTROL.F = 1
+	elseif KEY:lower() == 's' then
+		CONTROL.B = -1
+	elseif KEY:lower() == 'a' then
+		CONTROL.L = -1 
+	elseif KEY:lower() == 'd' then 
+		CONTROL.R = 1
+	end
+end)
+
+MOUSE.KeyUp:connect(function(KEY)
+	if KEY:lower() == 'w' then
+		CONTROL.F = 0
+	elseif KEY:lower() == 's' then
+		CONTROL.B = 0
+	elseif KEY:lower() == 'a' then
+		CONTROL.L = 0
+	elseif KEY:lower() == 'd' then
+		CONTROL.R = 0
+	end
+end)
+
+
+
+
+
+
+
+-- init
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/oxilegeek/gui-creator/main/gui%20creator"))()
+local Cheat = library.new("goldo cheats", 5013109572)
+
+
+local function deleteGui()
+	game.CoreGui:FindFirstChild("goldo cheats"):Destroy()
+end
+
+
+-- first page
+local page1 = Cheat:addPage("Général", 5012544693)
+local section1 = page1:addSection("Section 1")
+
+
+section1:addButton("drop inv", function()
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		v.Parent = game.Players.LocalPlayer.Character
+	end
+	wait(1)
+	game.Players.LocalPlayer.Character.Humanoid:Destroy()
+end)
+
+
+section1:addToggle("fly", nil, function(value)
+	_G.FLYING = value
+	FLY()
+end)
+
+section1:addToggle("Tp clic", nil, function(value)
+	if value == true then
+		TpClicOn = true
+	end
+	if value == false then
+		TpClicOn = false
+	end
+end)
+
+section1:addKeybind("touche tp", Enum.KeyCode.E, function()
+	if TpClicOn == true then
+		local mouse = game.Players.LocalPlayer:GetMouse()
+		if mouse.Target then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(mouse.Hit.x, mouse.Hit.y + 5, mouse.Hit.z)
+		end
+	end
+end)
+
+
+
+-- cheats
+local page3 = Cheat:addPage("cheats", 5012544693)
+local oxi = page3:addSection("oxi")
+local AdminCmds = page3:addSection("admin cmds")
+
+oxi:addButton("oxi cheats", function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/oxigeeklecheater/oxiscript/main/oxiscript", true))()
+end)
+AdminCmds:addButton("admin cmds", function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Goldo1236/cheats/main/admin%20script", true))()
+end)
+
+--visual
+local page4 = Cheat:addPage("visual", 5012544693)
+local camera = page4:addSection("camera")
+
+
+camera:addToggle("camera noclip", nil, function(value)
+	if value == true then
+		game.Players.LocalPlayer.DevCameraOcclusionMode = 1
+
+	end
+	if value == false then
+		game.Players.LocalPlayer.DevCameraOcclusionMode = 0	
+	end
+end)
+
+
+
+
+-- paramètres
+local page2 = Cheat:addPage("paramètres", 5012544693)
+local parametres = page2:addSection("paramètres")
+
+
+parametres:addKeybind("Toggle Keybind", Enum.KeyCode.PageUp, function()
+	Cheat:toggle()
+end, function()
+end)
+
+
+
+
+
+
+
+
+
+game.CoreGui.ChildAdded:Connect(function(child)
+	if child.Name == "goldo cheats" then
+		deleteGui()
+	end
+end)
+
+
+-- load
+Cheat:SelectPage(Cheat.pages[1], true)
